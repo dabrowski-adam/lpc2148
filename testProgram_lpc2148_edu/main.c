@@ -160,18 +160,18 @@ proc1(void* arg)
     }
 
     // Read joystick
-    keypress = checkKey();
-    if (keypress != KEY_NOTHING) 
-    {
-      if (keypress == KEY_UP && targetTemperature < 60)
+    keypress = checkKeyUpDown();
+    // if (keypress != KEY_NOTHING) 
+    // {
+      if (keypress == 1 && targetTemperature < 60)
       {
         targetTemperature += 1;
       } 
-      else if (keypress == KEY_DOWN && targetTemperature > 1)
+      else if (keypress == -1 && targetTemperature > 1)
       {
         targetTemperature -= 1;
       }
-    }
+    // }
 
     // Print temperature
     printf("\nDisplaying temperature.\n");
