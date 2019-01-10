@@ -23,11 +23,11 @@
  * Typedefs and defines
  *****************************************************************************/
 #define KEYPROC_STACK_SIZE 300
-#define KEYPIN_CENTER 0x00000100
-#define KEYPIN_UP     0x00000400
-#define KEYPIN_DOWN   0x00001000
-#define KEYPIN_LEFT   0x00000200 
-#define KEYPIN_RIGHT  0x00000800
+#define KEYPIN_CENTER 0x00010000 //0x00000100
+#define KEYPIN_UP     0x00020000 //0x00000400
+#define KEYPIN_DOWN   0x00100000 //0x00001000
+#define KEYPIN_LEFT   0x00080000 //0x00000200 
+#define KEYPIN_RIGHT  0x00040000 //0x00000800
 
 #if 0
       //check if P0.8 center-key is pressed
