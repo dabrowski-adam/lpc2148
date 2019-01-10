@@ -76,7 +76,7 @@ getKeys(void)
   return readKeys;
 }
 
-tU8
+tS8
 checkKeyUpDown(void)
 {
   if ((IOPIN & KEYPIN_RIGHT) == 0)     return 1;
