@@ -76,11 +76,13 @@ getKeys(void)
   return readKeys;
 }
 
-tS8
+tU8
 checkKeyUpDown(void)
 {
   if ((IOPIN & KEYPIN_RIGHT) == 0)     return 1;
-  if ((IOPIN & KEYPIN_LEFT) == 0)   return -1;
+  if ((IOPIN & KEYPIN_LEFT) == 0)   return 2;
+  if ((IOPIN & KEYPIN_DOWN) == 0)   return 2;
+  if ((IOPIN & KEYPIN_UP) == 0)   return 1;
   return 0;
 }
 
