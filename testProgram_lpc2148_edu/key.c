@@ -79,8 +79,8 @@ getKeys(void)
 tU8
 checkKeyUpDown(void)
 {
-  if ((IOPIN & KEYPIN_UP) == 0)     return 1;
-  if ((IOPIN & KEYPIN_DOWN) == 0)   return -1;
+  if ((IOPIN & KEYPIN_RIGHT) == 0)     return 1;
+  if ((IOPIN & KEYPIN_LEFT) == 0)   return -1;
   return 0;
 }
 
