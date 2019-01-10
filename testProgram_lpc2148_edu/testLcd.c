@@ -116,8 +116,8 @@ messageOnLCD(char *str, tU8 important)
     initialized = 1;
   }
   
-	lcdBacklight(TRUE);
-  osSleep(50);
+	// lcdBacklight(TRUE);
+  // osSleep(50);
 
   //function set
   writeLCD(0, 0x30);
