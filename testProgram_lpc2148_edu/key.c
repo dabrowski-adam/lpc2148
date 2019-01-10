@@ -24,8 +24,8 @@
  *****************************************************************************/
 #define KEYPROC_STACK_SIZE 300
 #define KEYPIN_CENTER 0x00010000 //0x00000100
-#define KEYPIN_UP     0x00020000 //0x00000400
-#define KEYPIN_DOWN   0x00100000 //0x00001000
+#define KEYPIN_UP     0x0004000//0x00020000 //0x00000400
+#define KEYPIN_DOWN   0x0001000//0x00100000 //0x00001000
 #define KEYPIN_LEFT   0x00080000 //0x00000200 
 #define KEYPIN_RIGHT  0x00040000 //0x00000800
 
@@ -85,13 +85,13 @@ tU8 checkKey(void)
   return retVal;
 }
 
-tBool damping(tU8 readKeys)  //tlumienie drgan zestykow
+tBool damping(tU8 readKeys)  // damping contact oscillations 
 {
     tU8 check =getKeys();
     tS32 i;
     for( i=0; i<10; i++)
     {
-        if(readKeys != check) return TRUE;  //10 razy sprawdzamy, czy nie wcisniety 
+        if(readKeys != check) return TRUE;  //check 10 times whether is pressed 
         check =getKeys(); 
         osSleep(1);
     }
@@ -102,9 +102,8 @@ tBool damping(tU8 readKeys)  //tlumienie drgan zestykow
  *
  * Description:
  *    Sample key states
- * monitorowanie zmian stanu joysticka
- *  checkawdza obsluge ktorych kierunkow umozliwiono a potem checkawdza w ktora strone wychylony jest joystick
- * i odpowiednio ustawia wartosci zmiennych globalnych
+ * monitoring joystick state
+ * Checks handling of the allowed directions and after that cheks to which side the joystick is being pushed
  ****************************************************************************/
 void
 sampleKey(void)
@@ -113,7 +112,7 @@ sampleKey(void)
   tU8   readKeys;
   
   //get sample
-  readKeys = getKeys(); //pobranie kierunku jaki zostal wybrany na joysticku
+  readKeys = getKeys(); //reading direction chosen on joystick
   
   //check center key
   if (readKeys & KEY_CENTER)
@@ -160,7 +159,7 @@ static void
 procKey(void* arg)
 {
   //make all key signals as inputs
-  //okreslenie wszystkich mozliwych sygnalow joysticka jako sygnaly wejsciowe
+  //defining all possible joystick signals as input signals
   IODIR &= ~(KEYPIN_CENTER | KEYPIN_UP | KEYPIN_DOWN | KEYPIN_LEFT | KEYPIN_RIGHT);
 
   //sample keys each 50 ms, i.e., 20 times per second
