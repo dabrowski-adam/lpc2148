@@ -183,8 +183,8 @@ proc1(void* arg)
     message[3] += decimalNumber;
 
     // Target
-    message[14] += targetTemperature / 10;
-    message[15] += targetTemperature % 10;
+    message[13] += targetTemperature / 10;
+    message[14] += targetTemperature % 10;
 
     messageOnLCD(message, FALSE);
   
@@ -227,7 +227,7 @@ proc1(void* arg)
     
         DACR = ((val+128) << 8) |  // Actual value to output
               (1 << 16);          // BIAS = 1, 2.5uS settling time
-    
+        
         // Or...
         // DACR = (val << 6) | 0x00010000;
     
